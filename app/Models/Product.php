@@ -88,12 +88,17 @@ class Product extends Model
         return 'in_stock';
     }
 
+    public function hasCustomImage(): bool
+    {
+        return !empty($this->image) && \Illuminate\Support\Facades\Storage::disk('public')->exists($this->image);
+    }
+
     public function getImageUrlAttribute(): string
     {
-        if ($this->image && file_exists(public_path('storage/' . $this->image))) {
+        if ($this->hasCustomImage()) {
             return asset('storage/' . $this->image);
         }
-        return asset('images/product-placeholder.png');
+        return asset('images/product-placeholder.svg');
     }
 
     public function scopeActive($query)

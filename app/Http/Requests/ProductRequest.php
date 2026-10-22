@@ -9,7 +9,7 @@ class ProductRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return auth()->check() && auth()->user()->isAdmin();
     }
 
     public function rules(): array
@@ -29,6 +29,16 @@ class ProductRequest extends FormRequest
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
             'description' => ['nullable', 'string', 'max:2000'],
             'is_active' => ['nullable', 'boolean'],
+            'remove_image' => ['nullable', 'boolean'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'image.image' => 'The uploaded file must be an image.',
+            'image.mimes' => 'Product image must be in JPG, JPEG, PNG, or WEBP format.',
+            'image.max' => 'Product image size must not exceed 2MB (2048 KB).',
         ];
     }
 }

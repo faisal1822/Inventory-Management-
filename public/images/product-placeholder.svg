@@ -1,8 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
-  <rect width="200" height="200" rx="12" fill="#F1F5F9"/>
-  <path d="M70 85L100 68L130 85L100 102L70 85Z" stroke="#94A3B8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M70 85V119L100 136V102" stroke="#94A3B8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M130 85V119L100 136" stroke="#94A3B8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="100" cy="100" r="80" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="6 6"/>
-  <text x="100" y="162" text-anchor="middle" fill="#64748B" font-family="sans-serif" font-size="12" font-weight="600">No Image</text>
+  <rect width="200" height="200" rx="12" fill="#F8FAFC"/>
+  <rect x="1" y="1" width="198" height="198" rx="11" stroke="#E2E8F0" stroke-width="2"/>
+  <path d="M65 145L95 105L120 135L135 118L165 155H50L65 145Z" fill="#CBD5E1"/>
+  <circle cx="80" cy="75" r="14" fill="#CBD5E1"/>
+  <text x="100" y="180" text-anchor="middle" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="12" font-weight="500">No Image Available</text>
 </svg>

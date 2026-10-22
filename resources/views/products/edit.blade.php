@@ -125,14 +125,21 @@
                             @error('image')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                            <div class="border rounded p-2 text-center bg-light">
-                                <img id="image_preview" src="{{ $product->image_url }}" alt="Preview" style="max-height: 80px; max-width: 100%;" class="rounded">
+
+                            <div class="border rounded p-2 text-center bg-light mb-2 position-relative" style="min-height: 110px;">
+                                <img id="image_preview" src="{{ $product->image_url }}" alt="{{ $product->name }}" style="max-height: 100px; max-width: 100%;" class="rounded object-fit-contain">
                             </div>
-                            @if($product->image)
-                            <div class="form-check mt-2">
-                                <input class="form-check-input" type="checkbox" name="remove_image" id="remove_image" value="1">
-                                <label class="form-check-label text-danger small" for="remove_image">Remove current image</label>
+
+                            @if($product->hasCustomImage())
+                            <div class="form-check p-2 bg-light rounded border border-danger-subtle">
+                                <input class="form-check-input ms-1" type="checkbox" name="remove_image" id="remove_image" value="1" onchange="toggleRemoveImage(this)">
+                                <label class="form-check-label text-danger fw-semibold small ms-2" for="remove_image">
+                                    <i class="bi bi-trash3 me-1"></i> Remove current image
+                                </label>
                             </div>
+                            <small class="text-muted d-block mt-1" style="font-size: 0.72rem;">Uploading a new image will automatically replace the existing file.</small>
+                            @else
+                            <small class="text-muted d-block" style="font-size: 0.72rem;">No custom image uploaded. Showing neutral placeholder.</small>
                             @endif
                         </div>
                     </div>
@@ -157,13 +164,29 @@
 
 @push('scripts')
 <script>
+    const originalImageUrl = '{{ $product->image_url }}';
+    const placeholderUrl = '{{ asset("images/product-placeholder.svg") }}';
+
     function previewImage(input) {
         if (input.files && input.files[0]) {
+            const removeCheckbox = document.getElementById('remove_image');
+            if (removeCheckbox) removeCheckbox.checked = false;
+
             const reader = new FileReader();
             reader.onload = function(e) {
                 document.getElementById('image_preview').src = e.target.result;
-            }
+            };
             reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function toggleRemoveImage(checkbox) {
+        const fileInput = document.getElementById('product_image');
+        if (checkbox.checked) {
+            fileInput.value = '';
+            document.getElementById('image_preview').src = placeholderUrl;
+        } else {
+            document.getElementById('image_preview').src = originalImageUrl;
         }
     }
 </script>
