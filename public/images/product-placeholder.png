@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" rx="12" fill="#F1F5F9"/>
+  <path d="M70 85L100 68L130 85L100 102L70 85Z" stroke="#94A3B8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M70 85V119L100 136V102" stroke="#94A3B8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M130 85V119L100 136" stroke="#94A3B8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="100" cy="100" r="80" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="6 6"/>
+  <text x="100" y="162" text-anchor="middle" fill="#64748B" font-family="sans-serif" font-size="12" font-weight="600">StockMaster</text>
+</svg>
